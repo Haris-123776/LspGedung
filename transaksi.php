@@ -23,15 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $durasi = $_POST['durasi'] ?? ''; // Mengambil durasi yang diinputkan
     $identitas = $_POST['identitas'] ?? ''; // Mengambil nomor identitas pengguna
 
-    // Validasi input
+        // menegecek apakah durasi brupa angka, jika tidak maka akan muncu pesan error
     if (!is_numeric($durasi)) {
         $errors[] = "Durasi harus berupa angka lebih dari 0";
     }
+        // mengecek apakah identitas berupa angka jika tidak maka akan muncul pesan error
     if (!is_numeric($_POST['identitas'])) {
         $errors[] = "Identitas harus berupa angka";
     }
 
-    // Validasi: Nomor identitas harus 16 digit angka
+        // strlen untuk menghitung jumlah karakter yang dinputkan pada input dengan name identitas
     if (strlen($_POST['identitas']) !== 16) {
         $errors[] = "Nomor Identitas harus 16 digit angka.";
     }
